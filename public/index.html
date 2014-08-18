@@ -1,0 +1,74 @@
+<!--
+
+Ref.
+https://github.com/btford/angular-socket-io-seed
+http://socket.io/#how-to-use
+
+-->
+
+
+<!DOCTYPE html>
+
+<html lang="en" ng-app="myApp">
+
+<head>
+	<meta charset="utf-8"/> 
+	<title>Angular Socket.io Seed App</title>
+
+	<!-- CSS -->
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/app.css" rel="stylesheet"/>
+</head>
+
+<body>
+
+	<div ng-controller="AppCtrl">
+		<h2 >Hello {{name}} </h2>
+		
+		<ul class="menu">
+		  <li><a href="#/view1">view1</a></li>
+		  <li><a href="#/view2">view2</a></li>
+		</ul>
+
+		<!-- Views will be rendered here -->
+		<div ng-view></div>
+
+		<!-- 
+		app-version is a directive
+		 -->
+		<div>
+		  | Angular Socket.io seed app: v <span app-version></span>
+		</div>
+	</div>
+
+
+	<!-- JS -->
+	<script src="http://code.angularjs.org/1.2.21/angular.js"></script>
+	<script src="http://code.angularjs.org/1.2.21/angular-route.js"></script>
+	<script src="bower_components/angular-socket-io/socket.js"></script>
+
+
+	<!-- NB!! You need to add socket.io client code
+	Can dop this 2 ways:
+	A standalone build of socket.io-client is exposed automatically by the socket.io server 
+	as /socket.io/socket.io.js
+	See node_modules/socket.io/node_modules/socket.io-client/README.md
+
+	<script src="http://localhost:3300/socket.io/socket.io.js"></script>
+	OR 
+	copy  node_modules/socket.io/node_modules/socket.io-client/socket.io.js to 
+	/public/lib/socket-io-client/socket.io.js 
+	-->
+
+	<!--<script src="http://localhost:3300/socket.io/socket.io.js"></script> -->
+	<script src="lib/socket-io-client/socket.io.js"></script>
+
+	<script src="js/app.js"></script>
+	<script src="js/controllers/controllers.js"></script>
+	<script src="js/services/services.js"></script>
+	<script src="js/filters/filters.js"></script>
+	<script src="js/directives/directives.js"></script>
+
+</body>
+
+</html>
