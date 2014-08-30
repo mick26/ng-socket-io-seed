@@ -1,23 +1,57 @@
 'use strict';
 
-/* Controllers */
 
-angular.module('myApp.controllers', [])
+/**
+ * Module - for controllers
+ */
+angular.module('myApp.controllers', [] )
 
-  .controller('AppCtrl', function ($scope, socket) {
+/** 
+ * Controllers 
+ */
+
+/*
+$scope is an object that holds all of the controller's models
+$socket is our Socket.IO service
+*/
+.controller('AppCtrl', function AppCtrl($scope, socket) {
+
+  //First, we will create a listener for the 'echo' event that will be emited by our test server:
+  socket.on('echo', function (data) {
+      $scope.serverResponse = data;
+  });
+
+  /*
+  We will display $scope.serverResponse later in index.html.
+  Now there will also be two functions that will send the data - one using the basic emit() method 
+  and one using emit() with acknowledgment callback:
+  */
+  $scope.emitBasic = function emitBasic() {
+        socket.emit('echo', $scope.dataToSend);
+        //$scope.dataToSend = '';
+    };
+ 
+    $scope.emitACK = function emitACK() {
+        socket.emit('echo-ack', $scope.dataToSend, function (data) {
+            $scope.serverResponseACK = data;
+        });
+       //$scope.dataToSend = '';
+    };
+
+
+
+
     socket.on('send:name', function (data) {
       $scope.name = data.name;
       console.log("DATA= "+JSON.stringify(data));   //TEST
     });
-  })
 
-  .controller('MyCtrl1', function ($scope, socket) {
     socket.on('send:time', function (data) {
       $scope.time = data.time;
       console.log("DATA time= "+JSON.stringify(data));   //TEST
     });
-  })
 
-  .controller('MyCtrl2', function ($scope) {
-    // write Ctrl here
-  });
+
+});
+
+

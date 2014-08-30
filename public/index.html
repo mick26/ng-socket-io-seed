@@ -1,8 +1,8 @@
-
-<!--
+<!-- 
 
 Ref.
-https://github.com/btford/angular-socket-io-seed
+https://github.com/btford/angular-socket-io
+http://code.tutsplus.com/tutorials/more-responsive-single-page-applications-with-angularjs-socketio-creating-the-library--cms-21738
 http://socket.io/#how-to-use
 
 -->
@@ -12,67 +12,91 @@ http://socket.io/#how-to-use
 
 <html lang="en" ng-app="myApp">
 
+
+<h2 >Hello {{name}} </h2>
+
 <head>
-	<meta charset="utf-8"/> 
-	<title>Angular Socket.io Seed App</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Angular Socket.io</title>
+  <!-- CSS -->
+  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- <link href="css/style.css" rel="stylesheet" /> -->
+</head> 
 
-	<!-- CSS -->
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/app.css" rel="stylesheet"/>
-</head>
-
-<body>
-
-	<div ng-controller="AppCtrl">
-		<h2 >Hello {{name}} </h2>
-		<ul class="menu">
-		  <li><a href="#/view1">view1</a></li>
-		  <li><a href="#/view2">view2</a></li>
-		</ul>
-
-		<!-- Views will be rendered here -->
-		<div ng-view></div>
-
-		<!-- 
-		app-version is a directive
-		 -->
-		<div>
-		  | Angular Socket.io seed app: v <span app-version></span>
-		</div>
-	</div>
+<body ng-controller="AppCtrl">
 
 
-	<!-- JS -->
-	<script src="http://code.angularjs.org/1.2.21/angular.js"></script>
-	<script src="http://code.angularjs.org/1.2.21/angular-route.js"></script>
-	<script src="bower_components/angular-socket-io/socket.js"></script>
+<a href="/socket.io/socket.io.js">Socket.io source code</a></li>
+<hr>
+
+<div class="well">
+<em>Some Partials</em>
+      <ul class="menu">
+          <li><a href="#/view1">view1</a></li>
+          <li><a href="#/view2">view2</a></li>
+       </ul>
+      
+      <!-- Views will be rendered here -->
+      <div ng-view></div>
+</div>
 
 
-	<!-- NB!! You need to add socket.io client code
-	Can do this a number of ways:
-	A standalone build of socket.io-client is exposed automatically by the socket.io server 
-	as /socket.io/socket.io.js
-	See node_modules/socket.io/node_modules/socket.io-client/README.md
+<div>
+    <p>You might want to get a callback when the client confirmed the message reception.
+        To do this, simply pass a function as the last parameter of .send or .emit. What’s more, when you use .emit, the acknowledgement is done by you, which means you can also pass data along <a href="http://socket.io/docs/">Read more</a>
+    </p>
+    <p>Example:</p>
+    <input ng-model="dataToSend">
+    <button ng-click="emitBasic()">Send</button>
+    <button ng-click="emitACK()">Send (ACK)</button>
+    <div>Server Response: {{ serverResponse }}</div>
+    <div>Server Response (ACK): {{ serverResponseACK }}</div>
+  </div>
+
+
+
 	
-	<script src="http://localhost:3300/socket.io/socket.io.js"></script>
-	OR
-	<script src="/socket.io/socket.io.js"></script> 	
-	OR 
-	copy  node_modules/socket.io/node_modules/socket.io-client/socket.io.js to 
-	/public/lib/socket-io-client/socket.io.js 
-	OR
-	bower install socket.io-client
-	-->
 
-	<!--<script src="http://localhost:3300/socket.io/socket.io.js"></script> -->
-	<!--<script src="lib/socket-io-client/socket.io.js"></script> -->
 
-	<script src="/socket.io/socket.io.js"></script> 
-	<script src="js/app.js"></script>
-	<script src="js/controllers/controllers.js"></script>
-	<script src="js/services/services.js"></script>
-	<script src="js/filters/filters.js"></script>
-	<script src="js/directives/directives.js"></script>
+  
+  <!-- -->
+  
+  <!-- JS -->
+  <!--
+  <script src="http://code.angularjs.org/1.2.22/angular.js"></script>
+  <script src="http://code.angularjs.org/1.2.22/angular-route.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>  
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> 
+  -->
+
+    <script src="bower_components/angular/angular.min.js"></script>  
+    <script src="bower_components/angular-route/angular-route.min.js"></script>  
+
+    <!-- socket.io client code -->
+    <script src="http://localhost:8800/socket.io/socket.io.js"></script>
+    <!--another option is: <script src="bower_components/socket.io-client/socket.io.js"></script> -->
+
+    <!-- Brian Fords module for using Socket.io with Angular -->
+    <script src="bower_components/angular-socket-io/socket.js"></script>   
+
+    <script src="js/app.js"></script>
+    <script src="js/controllers/controllers.js"></script>
+    <script src="js/directives/directives.js"></script>
+    <script src="js/filters/filters.js"></script> 
+    <script src="js/services/services.js"></script>
+
+    <!--<script src="lib/angular-socketio/angular-socket.js"></script> -->
+ 
+    <!--
+    The angular socket.io library code from: 
+    http://code.tutsplus.com/tutorials/more-responsive-single-page-applications-with-angularjs-socketio-creating-the-library--cms-21738
+    <script src="bower_components/socket.io-client/socket.io.js"></script>
+    You can use this code instead of Brian Fords angular-socket-io.
+
+    I used Brian Fords code in favour of it as with Brians you can register an Angular service with socket.io easily using socketFactory see js/services/services.js. It's also nice having the package available on Bower.
+    -->
+
 
 </body>
 
