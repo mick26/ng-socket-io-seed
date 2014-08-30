@@ -1,6 +1,6 @@
 # Angular Socket.IO Seed
 
-Based on Brian Fords [Angular Socket-io Seed](https://github.com/btford/angular-socket-io-seed) and using [angular-socket-io module](https://github.com/btford/angular-socket-io) to provide a wrapper around the io() object given by socket.io interact with socket.io on the client side. Parts were also taken from the [Tuts+ tutorial by Maciej Sopyło](http://code.tutsplus.com/tutorials/more-responsive-single-page-applications-with-angularjs-socketio-creating-the-library--cms-21738).
+Based on Brian Fords [Angular Socket-io Seed](https://github.com/btford/angular-socket-io-seed) and using [angular-socket-io module](https://github.com/btford/angular-socket-io) to provide a wrapper around the io() object given by socket.io to  the client. Parts were also taken from the [Tuts+ tutorial by Maciej Sopyło](http://code.tutsplus.com/tutorials/more-responsive-single-page-applications-with-angularjs-socketio-creating-the-library--cms-21738).
 
 
 * No Jade just HTML
