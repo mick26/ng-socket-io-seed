@@ -44,4 +44,4 @@ Socket.io can be used with controllers by injecting it like:
 - npm install 
 - bower install
 - node server.js
-- localhost:3300
+- localhost:8800
